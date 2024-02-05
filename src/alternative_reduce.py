@@ -44,13 +44,12 @@ for hsh in args.hashtags:
             dates.append(k[0])
             counts.append(total[k])
 
-    dates = [datetime.strptime(date_str, "%y-%m-%d") for date_str in dates]
-    ax.plot(dates, counts, label=hsh)
+    dates_list = [datetime.strptime(date_str, "%y-%m-%d") for date_str in dates]
+    ax.plot(dates_list, counts, label=hsh)
 
 ax.xaxis.set_major_locator(mdate.MonthLocator(interval=1))
 ax.xaxis.set_major_formatter(mdate.DateFormatter("%y-%m-%d"))
 
-plt.xticks(rotation=45)
 plt.xlabel('Date')
 plt.ylabel('Tweets')
 plt.title('Daily tweets for provided hashtags')
