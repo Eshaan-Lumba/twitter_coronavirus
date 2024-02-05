@@ -48,7 +48,7 @@ for hsh in args.hashtags:
     ax.plot(dates, counts, label=hsh)
 
 ax.xaxis.set_major_formatter(mdate.DateFormatter("%y-%m-%d"))
-ax.xaxis.set_major_locator(mdate.MonthLocator(interval=4))
+ax.xaxis.set_major_locator(mdate.MonthLocator(interval=2))
 
 plt.xticks(rotation=45)
 plt.xlabel('Date')
