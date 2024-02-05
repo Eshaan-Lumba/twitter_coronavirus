@@ -13,6 +13,7 @@ import glob
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdate
 from matplotlib.ticker import MultipleLocator
 from collections import Counter,defaultdict
 from datetime import datetime
@@ -45,6 +46,9 @@ for hsh in args.hashtags:
 
     dates = [datetime.strptime(date_str, "%y-%m-%d") for date_str in dates]
     ax.plot(dates, counts, label=hsh)
+
+ax.xaxis.set_major_formatter(mdate.DateFormatter("%y-%m-%d"))
+ax.xaxis.set_major_locator(mdate.MonthLocator(interval=4))
 
 plt.xticks(rotation=45)
 plt.xlabel('Date')
