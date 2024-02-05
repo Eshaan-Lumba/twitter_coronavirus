@@ -15,6 +15,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator
 from collections import Counter,defaultdict
+from datetime import datetime
 
 total = {}
 file_pat = "/home/elaa2020/bigdata/hw/hw2/twitter_coronavirus/outputs/geoTwitter20-*.lang"
@@ -32,7 +33,7 @@ for file in files:
                     total[(date, hsh)] += tmp[hsh][language]
 
 total = dict(sorted(total.items(), key = lambda key: key[0]))
-countDates = 0
+fig, ax = plt.subplots()
 for hsh in args.hashtags:
     dates = []
     counts = []
@@ -42,17 +43,14 @@ for hsh in args.hashtags:
             dates.append(k[0])
             counts.append(total[k])
 
-    countDates = len(dates)
-    plt.plot(dates, counts, label=hsh)
+    dates = [datetime.strptime(date_str, "%y-%m-%d") for date_str in dates]
+    ax.plot(dates, counts, label=hsh)
 
 plt.xticks(rotation=45)
 plt.xlabel('Date')
 plt.ylabel('Tweets')
 plt.title('Daily tweets for provided hashtags')
 plt.legend()
-ax = plt.gca()
-ax.xaxis.set_major_locator(MultipleLocator(countDates//12))
-plt.tight_layout()
 
 finalHashes = ""
 for hsh in args.hashtags:
