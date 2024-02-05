@@ -50,7 +50,6 @@ for hsh in args.hashtags:
 ax.xaxis.set_major_locator(mdate.MonthLocator(interval=2))
 ax.xaxis.set_major_formatter(mdate.DateFormatter("%y-%m-%d"))
 
-plt.xticks(rotation=45)
 plt.xlabel('Date')
 plt.ylabel('Tweets')
 plt.title('Daily tweets for provided hashtags')
