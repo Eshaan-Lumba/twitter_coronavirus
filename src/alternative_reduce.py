@@ -42,9 +42,12 @@ for hsh in args.hashtags:
 
     plt.plot(dates, counts, label=hsh)
 
+shownDates = ["20-02-01", "20-04-01", "20-06-01", "20-08-01", "20-10-01"]
+plt.xticks(shownDates, rotation=45)
 plt.xlabel('Date')
 plt.ylabel('Tweets')
 plt.title('Daily tweets for provided hashtags')
 plt.legend()
+plt.tight_layout()
 
 plt.savefig(f'line_graph_{args.hashtags}.png')
