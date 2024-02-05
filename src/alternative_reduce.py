@@ -13,6 +13,7 @@ import glob
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MultipleLocator
 from collections import Counter,defaultdict
 
 total = {}
@@ -31,6 +32,7 @@ for file in files:
                     total[(date, hsh)] += tmp[hsh][language]
 
 total = dict(sorted(total.items(), key = lambda key: key[0]))
+countDates = 0
 for hsh in args.hashtags:
     dates = []
     counts = []
@@ -40,14 +42,20 @@ for hsh in args.hashtags:
             dates.append(k[0])
             counts.append(total[k])
 
+    countDates = len(dates)
     plt.plot(dates, counts, label=hsh)
 
-shownDates = ["20-02-01", "20-04-01", "20-06-01", "20-08-01", "20-10-01"]
-plt.xticks(shownDates, rotation=45)
+plt.xticks(rotation=45)
 plt.xlabel('Date')
 plt.ylabel('Tweets')
 plt.title('Daily tweets for provided hashtags')
 plt.legend()
+ax = plt.gca()
+ax.xaxis.set_major_locator(MultipleLocator(countDates//5))
 plt.tight_layout()
 
-plt.savefig(f'line_graph_{args.hashtags}.png')
+finalHashes = ""
+for hsh in args.hashtags:
+    finalHashes += hsh
+
+plt.savefig(f'line_graph_{finalHashes}.png')
