@@ -51,7 +51,7 @@ plt.ylabel('Tweets')
 plt.title('Daily tweets for provided hashtags')
 plt.legend()
 ax = plt.gca()
-ax.xaxis.set_major_locator(MultipleLocator(countDates//5))
+ax.xaxis.set_major_locator(MultipleLocator(countDates//12))
 plt.tight_layout()
 
 finalHashes = ""
