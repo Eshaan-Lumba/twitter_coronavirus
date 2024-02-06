@@ -1,6 +1,6 @@
 # Analysing 2020 Tweets for Coronavirus
 
-In this repository, I performed some data analysis on geotagged tweets in 2020 to monitor the spread of covid-19. The biggest challenges from this project was learning to work with large datasets (1.1 billion tweets) and writing parallel code to optimize scripts. 
+In this repository, we perform data analysis on geotagged tweets in 2020 to monitor the spread of covid-19. The biggest challenges from this project were learning to work with large datasets (1.1 billion tweets) and writing parallel code to optimize scripts. 
 
 ## Tweet Data
 
@@ -82,45 +82,46 @@ The `src/alternative_reduce.py` file takes multiple hashtags as an input, and ou
 
 We now show some of our generated results and graphs from our processed data.
 
-### Top Countries with Tweets containing "#coronavirus"
-![Image Alt text](/plots/COUNTRY_\#coronavirus.png)
+### Bar Graphs
 
-**Task 5: Uploading**
+#### Top Countries with Tweets containing "#coronavirus"
+![Top Countries with Tweets containing "#coronavirus"](./plots/COUNTRY_coronavirus.png)
 
-Commit all of your code and images output files to your github repo and push the results to github.
-You must:
-1. Delete the current contents of the `README.md` file
-1. Insert into the `README.md` file a brief explanation of your project, including the 4 generated png files.
-    This explanation should be suitable for a future employer to look at while they are interviewing you to get a rough idea of what you accomplished.
-    (And you should tell them about this in your interviews!)
+We can see that the most tweets are from the US and India.
 
-## Submission
+#### Top Countries with Tweets containing "#코로나바이러스"
+![Top Countries with Tweets containing "#코로나바이러스"](./plots/COUNTRY_코로나바이러스.png)
 
-Upload a link to you github repository on sakai.
-I will look at your code and visualization to determine your grade.
+Unsurprisingly, the most tweets are from Korea as the hashtag is in Korean.
 
-**Grading:**
+#### Top Languages with Tweets containing "#coronavirus"
+![Top Languages with Tweets containing "#coronavirus"](./plots/LANG_coronavirus.png)
 
-The assignment is worth 32 points:
+We see that most tweets are in English, followed by Spanish.
 
-1. 8 points for getting the map/reduce to work
-1. 8 points for your repo/readme file
-1. 8 points for Task 3 plots
-1. 8 points for Task 4 plots
+#### Top Languages with Tweets containing "#코로나바이러스"
+![Top Languages with Tweets containing "#코로나바이러스"](./plots/LANG_코로나바이러스.png)
 
-The most common ways to miss points are:
-1. having incorrect data plotted (because the map program didn't finish running on all of the inputs)
-1. having illegible plots that are not "reasonably" formatted
+Similar to the second graph, it makes sense that most of the tweets are in Korean since the hashtag is a Korean word.
 
-Notice that we are not using CI to grade this assignment.
-There's two reasons:
+### Line Graphs
 
-1. You can get slightly different numbers depending on some of the design choices you make in your code.
-    For example, should the term `corona` count tweets that contain `coronavirus` as well as tweets that contain just `corona`?
-    These are relatively insignificant decisions.
-    I'm more concerned with your ability to write a shell script and use `nohup`, `&`, and other process control tools effectively.
+#### Popularity of #corona, #coronavirus, #covid19 and #flu across 2020
+![Popularity of #corona, #coronavirus, #covid19 and #flu across 2020](./plots/line_graph_coronacoronaviruscovid19flu.png)
 
-1. The dataset is too large to upload to github actions.
-    In general, writing test cases for large data analysis tasks is tricky and rarely done.
-    Writing correct code without test cases is hard,
-    and so many (most?) analysis of large datasets contain lots of bugs.
+We can clearly see a peak in around March and April for all the covid hashtags, while flu remained relatively flat in comparison. 
+
+#### Popularity of #doctor and #coronavirus across 2020
+![Popularity of #doctor and #coronavirus across 2020](./plots/line_graph_doctorcoronavirus.png)
+
+Similar graph for `#coronavirus` as above, and `#doctor` remains relatively flat in comparison. 
+
+#### Popularity of #doctor, #nurse and #hospital across 2020
+![Popularity of #doctor, #nurse and #hospital across 2020](./plots/line_graph_doctornursehospital.png)
+
+`#doctor` has a large peak in July, a smaller peak in January, and remains high at the start of the year. `#nurse` has a peak in May-June but along with `#hospital` is relatively flat, though there is minor peak in around June for `#hospital`.
+
+#### Popularity of #sick, #cough, #sneeze and #flu across 2020
+![Popularity of #sick, #cough, #sneeze and #flu across 2020](./plots/line_graph_sickcoughsneezeflu.png)
+
+`#sick` peaks in around November and `#flu` seems to peak in around July-August. Both `#sneeze` and `#flu` are relatively flat in comparison.
