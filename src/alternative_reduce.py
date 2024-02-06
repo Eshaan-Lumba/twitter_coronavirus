@@ -57,6 +57,6 @@ plt.legend()
 
 finalHashes = ""
 for hsh in args.hashtags:
-    finalHashes += hsh
+    finalHashes += hsh[1:]
 
 plt.savefig(f'line_graph_{finalHashes}.png')
